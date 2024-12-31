@@ -20,14 +20,14 @@
 
     - name: Docker Image
       docker_image:
-        name: acharyaditiss/myproject
+        name: shilpakjoshi/finaltask
         source: pull
 
     # Step 3: Create the new container with the same name
     - name: Docker Run (Create new container)
       docker_container:
         name: myweb
-        image: acharyaditiss/myproject
+        image: shilpakjoshi/finaltask
         state: started  # Ensure the container is started
         restart_policy: always
         published_ports:
