@@ -1,6 +1,6 @@
 # Configure the AWS provider
 provider "aws" {
-  region = "us-east-1"  # Replace with the desired AWS region
+  region = "ap-south-1"  # Replace with the desired AWS region
 }
 
 # Create a security group, but only if it doesn't exist
