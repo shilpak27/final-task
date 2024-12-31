@@ -1,0 +1,34 @@
+---
+- name: Install Docker and run container
+  hosts: web
+  become: true
+  tasks:
+    - name: Update apt
+      apt:
+        update_cache: yes
+
+    - name: Install Docker
+      apt:
+        name: docker.io
+        state: present
+
+    - name: Start and Enable Docker
+      systemd:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Docker Image
+      docker_image:
+        name: acharyaditiss/myproject
+        source: pull
+
+    # Step 3: Create the new container with the same name
+    - name: Docker Run (Create new container)
+      docker_container:
+        name: myweb
+        image: acharyaditiss/myproject
+        state: started  # Ensure the container is started
+        restart_policy: always
+        published_ports:
+          - "80:80"
